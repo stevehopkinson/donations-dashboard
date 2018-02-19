@@ -11,10 +11,12 @@ A simple one-page applicaton to fetch and display donations data from the JustGi
 
 ## Application summary
 The application consists of:
+
 * A Node.js/Express server, which serves the index HTML and compiled JavaScript/CSS bundle, and provides an API layer for the client to fetch charity data from;
 * A React-Redux front-end, which hits the back-end API to retrieve charity data and displays the result.
 
 The tools used to build the application (and the reasons for choosing them) were:
+
 * React: specified in the specification. Ensures that the application's interface is a pure function of state.
 * Redux: overkill for an app with such minimal state management, but to demonstrate an awareness of its use and implementation and to provide a base for further development.
 * Express: minimal, tried-and-tested Node framework for handling basic serving and routing.
@@ -27,11 +29,13 @@ The tools used to build the application (and the reasons for choosing them) were
 * Webpack dev server: allows hotloading and automatic refreshing of the front-end following changes.
 
 The choice to populate the client with data through an API, rather than bootstrapping the client before sending the initial response, was made for two reasons:
+
 1. To minimise the amount of time between the client's initial request and the first render. (The JustGiving API can take around half a second to respond, making the app feel noticeably less responsive if the back-end waits for a response before serving the client code).
 2. To make the front-end/back-end more loosely coupled.
 The back-end API also makes the requests to both JustGiving endpoints (to get the charity and its donations) in parallel, parsing the results into a single response so that the client only needs to make a single request.
 
 Owing to time constraints, the application is less developed than I would have liked. Given further time, I would:
+
 * Include a more extensive test suite, including back-end unit tests and additional front-end testing.
 * Remove hard-coded charity ID, and create an index page with the option to select between multiple charities, implementing react-redux-router to handle client-side routing.
 * Set up isomorphic rendering to take advantage of the synergies between Node and React.
