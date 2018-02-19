@@ -7,7 +7,7 @@ const instance = axios.create({
 	}
 });
 
-const makeGetRequest = url => instance.get(url); 
+const makeGetRequest = url => instance.get(url);
 
 const getCharity = charityId => makeGetRequest(`/${process.env.JUST_GIVING_APP_ID}/v1/charity/${charityId}`);
 

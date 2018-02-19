@@ -12,7 +12,7 @@ const charity = (state = null, action) => {
 	}
 }
 
-const isFetching = (state = false, action) => {
+const isFetching = (state = true, action) => {
 	switch (action.type) {
 		case actions.getCharityRequest.toString():
 			return true;

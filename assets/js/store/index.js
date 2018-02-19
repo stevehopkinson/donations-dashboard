@@ -6,7 +6,7 @@ import {
 import thunk from 'redux-thunk';
 
 import * as api from './api';
-import reducers from './Charity/reducers';
+import reducers from './reducers';
 
 const configureStore = initialState => {
 	return createStore(

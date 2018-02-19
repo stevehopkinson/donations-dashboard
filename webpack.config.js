@@ -2,10 +2,10 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    context: resolve(__dirname, 'assets/js'),
+    context: resolve(__dirname, 'assets/'),
 
     entry: [
-        './index.js'
+        './js/index.js'
     ],
 
     output: {
@@ -31,5 +31,17 @@ module.exports = {
         ]
     },
 
-    devtool: 'inline-source-map'
+    devtool: 'inline-source-map',
+
+    devServer: {
+        contentBase: 'public',
+        host: 'localhost',
+        port: 3000,
+        historyApiFallback: {
+            index: '/public/index.html'
+        },
+        proxy: {
+            '/api': 'http://localhost:8000'
+        }
+    }
 };

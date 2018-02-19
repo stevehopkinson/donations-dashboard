@@ -7,10 +7,11 @@ router.route('/charities/:charityId')
 	.get((req, res) => {
 		api.getCharityData(req.params.charityId)
 			.then(([charityResponse, donationsResponse]) => {
-				res.setHeader('Content-Type', 'application/json')
+				res.setHeader('Content-Type', 'application/json');
+
 				res.send({
-					...charityReponse.data,
-					donations: donationsResponse.data
+					...charityResponse.data,
+					donations: donationsResponse.data.donations
 				});
 			})
 			.catch(errors => {

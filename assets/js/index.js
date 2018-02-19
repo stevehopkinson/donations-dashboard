@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import Root from './containers/Root';
 
-import configureStore from './store';
+import '../scss/style.scss';
 
-const store = configureStore();
-
-ReactDOM.render(
-	<div store={store} />,
+render(
+	<Root />,
 	document.getElementById('root')
 );
