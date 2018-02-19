@@ -42,3 +42,4 @@ Owing to time constraints, the application is less developed than I would have l
 * Implemented further type checking, either through TypeScript or Flow.
 * Hosted the application online, using Heroku or a similar PaaS product.
 * Develop the visual design, including charity logos, calls to action, and further enhancements.
+* Add more robust error handling around malformed/failed API requests.
