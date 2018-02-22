@@ -13,8 +13,7 @@ const getCharity = charityId => makeGetRequest(`/${process.env.JUST_GIVING_APP_I
 
 const getDonations = charityId => makeGetRequest(`/${process.env.JUST_GIVING_APP_ID}/v1/charity/${charityId}/donations`);
 
-const getCharityData = charityId => axios.all([getCharity(charityId), getDonations(charityId)]); 
-
 module.exports = {
-	getCharityData
+	getCharity,
+	getDonations
 }

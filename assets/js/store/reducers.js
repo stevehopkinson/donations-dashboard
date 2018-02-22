@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import * as actions from './actions';
 
-const charity = (state = null, action) => {
+export const charity = (state = null, action) => {
 	switch (action.type) {
 		case actions.getCharitySuccess.toString():
 			return action.payload;
@@ -12,7 +12,7 @@ const charity = (state = null, action) => {
 	}
 }
 
-const isFetching = (state = true, action) => {
+export const isFetching = (state = false, action) => {
 	switch (action.type) {
 		case actions.getCharityRequest.toString():
 			return true;

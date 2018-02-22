@@ -9,41 +9,32 @@ import { getCharity } from '../store/actions';
 import CharityScreen from '../components/CharityScreen';
 import LoadingScreen from '../components/LoadingScreen';
 
-class App extends Component {
+export class App extends Component {
 	constructor(props) {
 		super(props);
 	}
 
 	componentWillMount() {
-		const { dispatch } = this.props;
-		dispatch(getCharity(2116));
+		const { dispatch, charityId } = this.props;
+		dispatch(getCharity(charityId));
 	}
 
 	render() {
 		const { charity, isFetching } = this.props;
 
-		return (
-			<div>
-				{
-					!isFetching &&
-						<CharityScreen charity={charity} />
-				}
-				{
-					isFetching &&
-						<LoadingScreen />
-				}
-			</div>
-		)
+		return !isFetching && charity
+			? <CharityScreen charity={charity} />
+			: <LoadingScreen />;
 	}
 }
 
 App.propTypes = {
 	charity: PropTypes.object,
-	isFetching: PropTypes.bool.isRequired,
-	dispatch: PropTypes.func.isRequired
+	dispatch: PropTypes.func.isRequired,
+	isFetching: PropTypes.bool.isRequired
 }
 
-function mapStateToProps({ charity, isFetching}) {
+function mapStateToProps({ charity, isFetching }) {
 	return {
 		charity,
 		isFetching

@@ -10,7 +10,7 @@ export default class Root extends Component {
   render() {
     return (
       <Provider store={store}>
-        <App />
+        <App charityId={2116} />
       </Provider>
     )
   }
