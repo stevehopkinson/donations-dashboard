@@ -12,6 +12,19 @@ export const charity = (state = null, action) => {
 	}
 }
 
+export const hasErrored = (state = false, action) => {
+	switch (action.type) {
+		case actions.getCharitySuccess.toString():
+			return false;
+
+		case actions.getCharityFailure.toString():
+			return true;
+
+		default:
+			return state;
+	}
+}
+
 export const isFetching = (state = false, action) => {
 	switch (action.type) {
 		case actions.getCharityRequest.toString():
@@ -26,9 +39,21 @@ export const isFetching = (state = false, action) => {
 	}
 }
 
+export const selectedCharity = (state = null, action) => {
+	switch (action.type) {
+		case actions.setSelectedCharity.toString():
+			return action.payload;
+
+		default:
+			return state
+	}
+}
+
 const reducers = combineReducers({
 	charity,
-	isFetching
+	hasErrored,
+	isFetching,
+	selectedCharity
 });
 
 export default reducers;

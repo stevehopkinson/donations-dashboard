@@ -3,6 +3,7 @@ import { createAction } from 'redux-actions';
 export const getCharityRequest = createAction('GET_CHARITY_REQUEST');
 export const getCharitySuccess = createAction('GET_CHARITY_SUCCESS');
 export const getCharityFailure = createAction('GET_CHARITY_FAILURE');
+export const setSelectedCharity = createAction('SET_SELECTED_CHARITY');
 
 export const getCharity = charityId => (dispatch, getState, api) => {
 	dispatch(getCharityRequest());

@@ -19,6 +19,7 @@ describe('App', () => {
 	beforeEach(() => {
 		props = {
 			dispatch: mockDispatch,
+			hasErrored: false,
 			isFetching: false
 		};
 		shallowApp = undefined;
@@ -60,5 +61,11 @@ describe('App', () => {
 		};
 		const charityScreen = app().find('CharityScreen');
 		expect(charityScreen.length).toBe(1);
+	});
+
+	it('Renders ErrorScreen if hasErrored is passed and is true', () => {
+		props.hasErrored = true;
+		const errorScreen = app().find('ErrorScreen');
+		expect(errorScreen.length).toBe(1);
 	});
 })

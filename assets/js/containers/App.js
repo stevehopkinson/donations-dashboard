@@ -7,6 +7,7 @@ import { getCharity } from '../store/actions';
 
 // Components
 import CharityScreen from '../components/CharityScreen';
+import ErrorScreen from '../components/ErrorScreen';
 import LoadingScreen from '../components/LoadingScreen';
 
 export class App extends Component {
@@ -20,7 +21,11 @@ export class App extends Component {
 	}
 
 	render() {
-		const { charity, isFetching } = this.props;
+		const { charity, hasErrored, isFetching } = this.props;
+
+		if (hasErrored) {
+			return <ErrorScreen />
+		} 
 
 		return !isFetching && charity
 			? <CharityScreen charity={charity} />
@@ -31,12 +36,14 @@ export class App extends Component {
 App.propTypes = {
 	charity: PropTypes.object,
 	dispatch: PropTypes.func.isRequired,
+	hasErrored: PropTypes.bool.isRequired,
 	isFetching: PropTypes.bool.isRequired
 }
 
-function mapStateToProps({ charity, isFetching }) {
+function mapStateToProps({ charity, hasErrored, isFetching }) {
 	return {
 		charity,
+		hasErrored,
 		isFetching
 	}
 }
