@@ -25,7 +25,7 @@ describe("DonationCard", () => {
     mountedDonationCard = undefined;
   });
 
-  it('Renders no donation__amount if donation.amount isn\'t empty', () => {
+  it('Renders no donation__amount if donation.amount isn empty', () => {
     const donationAmount = donationCard().find('.donation__amount');
     expect(donationAmount.length).toBe(0);
   })
@@ -34,4 +34,10 @@ describe("DonationCard", () => {
     const donationImage = donationCard().find('.donation__image').first();
     expect(donationImage.props().style.backgroundImage).toBe(`url('${props.donation.imageUrl}')`)
   })
-});
+
+  it('Renders donation__amount if donation.amount isn\'t empty', () => {
+    props.donation.amount = 5;
+    const donationAmount = donationCard().find('.donation__amount');
+    expect(donationAmount.length).toBe(1);
+  })
+})
